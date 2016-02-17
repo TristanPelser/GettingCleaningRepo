@@ -17,4 +17,11 @@ run_analysis <- function() {
   X_global <- rbind(X_train, X_test)
   subject_global <- rbind(subject_train, subject_test)
   dataset <<- cbind(subject_global, Y_global, X_global)
-  }
+}
+
+# read in features and activities
+features <- read.table("UCI HAR Dataset/features.txt", col.names = c("featureID", "featureLabel"))
+activities <- read.table("UCI HAR Dataset/activity_labels.txt", col.names = c("activityID", "activityLabel"))
+
+# make labels a little neater
+activities$activityLabel <- gsub("_", " ", as.character(activities$activityLabel))
