@@ -41,6 +41,6 @@ write.table(dataset, "tidy_data_set.txt")
 library(data.table)
 newdata <- data.table(dataset)
 data_calculted <- newdata[, lapply(.SD, mean), by=c("subjectID", "activity")]
-write.table(data_calculted, "calculated_tidy_dataset.txt")
+write.table(data_calculted, "calculated_tidy_dataset.txt", row.name=FALSE)
 }
 
