@@ -9,6 +9,10 @@ Only one script here:
   
   + Required data can be found here: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
   
+  + run_analysis.R does two things:
+    1. Creates a tidy dataset txt file from the UCI HAR Dataset, with extracted std and mean measurements.
+    2. Creates a calculated dataset txt file, with the average of each variable for each activity and each subject.
+  
 ## Instructions for use: 
 
 1. Download [zip file](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)
