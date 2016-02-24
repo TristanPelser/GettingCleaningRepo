@@ -11,13 +11,6 @@ run_analysis <- function() {
   X_train <- read.table("UCI HAR Dataset/train/X_train.txt")
   Y_train <- read.table("UCI HAR Dataset/train/Y_train.txt")
   subject_train <- read.table("UCI HAR Dataset/train/subject_train.txt")
-  
-# merge data and build new data set
-  Y_global <- rbind(Y_train, Y_test)
-  X_global <- rbind(X_train, X_test)
-  subject_global <- rbind(subject_train, subject_test)
-  dataset <<- cbind(subject_global, Y_global, X_global)
-}
 
 # read in features and activities
 features <- read.table("UCI HAR Dataset/features.txt", col.names = c("featureID", "featureLabel"))
@@ -25,3 +18,20 @@ activities <- read.table("UCI HAR Dataset/activity_labels.txt", col.names = c("a
 
 # make labels a little neater
 activities$activityLabel <- gsub("_", " ", as.character(activities$activityLabel))
+
+# extract mean and std from data
+includedFeatures <- grep("-mean\\(\\)|-std\\(\\)", features$featureLabel)
+
+# merge data and build new data set
+Y_merged <- rbind(Y_train, Y_test)
+names(Y_merged) = "activityID" 
+
+X_merged <- rbind(X_train, X_test)
+X_merged <- X_merged[, includedFeatures]
+names(X_merged) <- gsub("\\(\\)", "", features$featureLabel[includedFeatures])
+
+subject_merged <- rbind(subject_train, subject_test)
+
+activity <<- merge(Y_merged, activities, by="activityID")$activityLabel
+dataset <<- cbind(subject_merged, X_merged, activity)
+}
