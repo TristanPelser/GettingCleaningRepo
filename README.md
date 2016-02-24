@@ -17,4 +17,5 @@ Only one script here:
 
 1. Download [zip file](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)
 2. Unzip data in your directory - should be in a folder called UCI HAR Dataset
-3. Source and run the R script in R to view the analyses! 
+3. View the codebook [here](https://github.com/TristanPelser/GettingCleaningRepo/blob/master/Code%20Book.md). 
+4. Source and run the R script in R to view the analyses! 

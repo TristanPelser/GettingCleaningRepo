@@ -11,6 +11,27 @@ The UCI Dataset description:
 
 > The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain.
 
+## run_analysis script
+
+The script was created with the following steps:
+
+1. Downloaded UCI HAR Dataset zip file, available [here](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip) 
+2. Unzipped data into working directory
+3. Read test data into R with read.table
+4. Read train data into R with read.table
+5. Loaded features and activity names with read.table, and set column names with col.names
+6. Neatened labels with gsub
+7. Created a variable to extract the mean and std from the data with grep function
+8. Merged Y data with rbind and set the names
+9. Merged X data with rbind, used the variable to extract mean and std, and set the names
+10. Merged the subject data with rbind and set the names
+11. Created the activity variable by merging Y data and activities 
+12. Merged subject, X, and activity data into **first tidy dataset** using cbind
+13. Wrote *"tidy-data-set.txt"* using write.table
+14. Loaded data.table into the library
+15. Created a **second data set** with the average of each variable for each activity and each subject using the previously created tidy dataset and lapply.
+16. Wrote *"calculated-data-set.txt"* using write.table
+
 ## Variables
 
 Variables in the data are outlined below:
@@ -83,24 +104,3 @@ Variables in the data are outlined below:
 * fBodyBodyGyroMag-std
 * fBodyBodyGyroJerkMag-mean
 * fBodyBodyGyroJerkMag-std
-
-## run_analysis script
-
-The script was created with the following steps:
-
-1. Downloaded UCI HAR Dataset zip file, available [here](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip) 
-2. Unzipped data into working directory
-3. Read test data into R with read.table
-4. Read train data into R with read.table
-5. Loaded features and activity names with read.table, and set column names with col.names
-6. Neatened labels with gsub
-7. Created a variable to extract the mean and std from the data with grep function
-8. Merged Y data with rbind and set the names
-9. Merged X data with rbind, used the variable to extract mean and std, and set the names
-10. Merged the subject data with rbind and set the names
-11. Created the activity variable by merging Y data and activities 
-12. Merged subject, X, and activity data into **first tidy dataset** using cbind
-13. Wrote *"tidy-data-set.txt"* using write.table
-14. Loaded data.table into the library
-15. Created a **second data set** with the average of each variable for each activity and each subject using the previously created tidy dataset and lapply.
-16. Wrote *"calculated-data-set.txt"* using write.table
