@@ -31,7 +31,16 @@ X_merged <- X_merged[, includedFeatures]
 names(X_merged) <- gsub("\\(\\)", "", features$featureLabel[includedFeatures])
 
 subject_merged <- rbind(subject_train, subject_test)
+names(subject_merged) <- "subjectID"
+  
+activity <- merge(Y_merged, activities, by="activityID")$activityLabel
+dataset <- cbind(subject_merged, X_merged, activity)
+write.table(dataset, "tidy_data_set.txt")
 
-activity <<- merge(Y_merged, activities, by="activityID")$activityLabel
-dataset <<- cbind(subject_merged, X_merged, activity)
+#create a second dataset with the average of each variable for each activity and each subject.
+library(data.table)
+newdata <- data.table(dataset)
+data_calculted <- newdata[, lapply(.SD, mean), by=c("subjectID", "activity")]
+write.table(data_calculted, "calculated_tidy_dataset.txt")
 }
+
