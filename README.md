@@ -13,6 +13,8 @@ Only one script here:
     1. Creates a tidy dataset txt file from the UCI HAR Dataset, with extracted std and mean measurements.
     2. Creates a calculated dataset txt file, with the average of each variable for each activity and each subject.
   
+  + For more information about how the script works, view the [codebook](https://github.com/TristanPelser/GettingCleaningRepo/blob/master/Code%20Book.md). 
+  
 ## Instructions for use: 
 
 1. Download [zip file](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)
