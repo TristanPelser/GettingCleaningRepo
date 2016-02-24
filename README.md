@@ -1,2 +1,1 @@
-# GettingCleaningRepo
-Getting and Cleaning Data Assignment Repository
+# Getting and Cleaning Data Assignment
